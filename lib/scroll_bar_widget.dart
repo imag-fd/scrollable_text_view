@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 class ScrollBar extends StatelessWidget {
 
-  final double scrollBarLength;
-  final double barOffset;
-  final double thumbLength;
+  final double? scrollBarLength;
+  final double? barOffset;
+  final double? thumbLength;
 
-  const ScrollBar({Key key, this.scrollBarLength, this.barOffset, this.thumbLength}) : super(key: key);
+  const ScrollBar({Key? key, this.scrollBarLength, this.barOffset, this.thumbLength}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class ScrollBar extends StatelessWidget {
           ),
         ),
         Container(
-          margin: EdgeInsets.only(top: barOffset>0.0 ? barOffset:0.0 ),
+          margin: EdgeInsets.only(top: barOffset!>0.0 ? barOffset!:0.0 ),
           width: 10,
           height: thumbLength,
           decoration: BoxDecoration(

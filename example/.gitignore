@@ -8,6 +8,10 @@
 .buildlog/
 .history
 .svn/
+<<<<<<< HEAD
+=======
+migrate_working_dir/
+>>>>>>> 69c9548 (0.0.3)
 
 # IntelliJ related
 *.iml
@@ -31,11 +35,22 @@
 .pub/
 /build/
 
+<<<<<<< HEAD
 # Web related
 lib/generated_plugin_registrant.dart
 
+=======
+>>>>>>> 69c9548 (0.0.3)
 # Symbolication related
 app.*.symbols
 
 # Obfuscation related
 app.*.map.json
+<<<<<<< HEAD
+=======
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
+>>>>>>> 69c9548 (0.0.3)

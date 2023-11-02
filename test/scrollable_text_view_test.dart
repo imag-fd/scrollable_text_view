@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:scrollable_text_view/scrollable_text_view.dart';
@@ -19,5 +20,14 @@ void main() {
 
   test('getPlatformVersion', () async {
     expect(await ScrollableTextView.platformVersion, '42');
+=======
+import 'package:flutter_test/flutter_test.dart';
+
+import 'package:scrollable_text_view/scrollable_text_view.dart';
+
+void main() {
+  test('adds one to input values', () {
+
+>>>>>>> 69c9548 (0.0.3)
   });
 }

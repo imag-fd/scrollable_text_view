@@ -8,12 +8,12 @@ GlobalKey containerKey = GlobalKey();
 class ScrollableTextView extends StatefulWidget {
 
   final Widget child ;
-  final double contentMarginHorizontal ;
-  final BoxDecoration contentBoxDecoration;
-  final double scrollBarMarginTop;
-  final double thumbLength ;
+  final double? contentMarginHorizontal ;
+  final BoxDecoration? contentBoxDecoration;
+  final double? scrollBarMarginTop;
+  final double? thumbLength ;
 
-  const ScrollableTextView({Key key,@required this.child,this.contentMarginHorizontal,this.contentBoxDecoration,this.scrollBarMarginTop =20,this.thumbLength =50}) : super(key: key);
+  const ScrollableTextView({Key? key,required this.child,this.contentMarginHorizontal,this.contentBoxDecoration,this.scrollBarMarginTop =20,this.thumbLength =50}) : super(key: key);
 
   @override
   _ScrollableTextViewState createState() => _ScrollableTextViewState();
@@ -29,14 +29,14 @@ class _ScrollableTextViewState extends State<ScrollableTextView> with TickerProv
 
 
   _scrollListener() {
-    double x =_controller.position.maxScrollExtent/(_scrollBarLength-widget.thumbLength);
+    double x =_controller.position.maxScrollExtent/(_scrollBarLength-widget.thumbLength!);
     if (_controller.hasClients  && !_scrollBarIsEnabled){
 
       if(_controller.position.maxScrollExtent>0.0){
 
         if(_controller.position.pixels==_controller.position.maxScrollExtent) {
           setState(() {
-            _barOffset = _scrollBarLength - widget.thumbLength;
+            _barOffset = _scrollBarLength - widget.thumbLength!;
           });
         }
         else{
@@ -60,11 +60,10 @@ class _ScrollableTextViewState extends State<ScrollableTextView> with TickerProv
   _initView(){
     WidgetsBinding.instance
         .addPostFrameCallback((_) {
-      double containerHeight = (containerKey?.currentContext
-          ?.findRenderObject() as RenderBox)?.size?.height;
+      double containerHeight = (containerKey?.currentContext?.findRenderObject() as RenderBox)!.size.height;
 
 
-      _scrollBarLength =containerHeight-widget.scrollBarMarginTop-(widget.scrollBarMarginTop*1.5);
+      _scrollBarLength =containerHeight-widget.scrollBarMarginTop!-(widget.scrollBarMarginTop!*1.5);
 
       if(_controller.hasClients){
         if(_controller.position.maxScrollExtent==0)
@@ -73,7 +72,7 @@ class _ScrollableTextViewState extends State<ScrollableTextView> with TickerProv
           _scrollBarIsVisible=true;
       }
 
-      _containerLength =containerHeight-(_scrollBarLength+widget.scrollBarMarginTop);
+      _containerLength =containerHeight-(_scrollBarLength+widget.scrollBarMarginTop!);
 
       setState(() {});
     });
@@ -121,7 +120,7 @@ class _ScrollableTextViewState extends State<ScrollableTextView> with TickerProv
                       )
                   ),
                   _scrollBarIsVisible ?  Padding(
-                      padding:  EdgeInsets.only(right:10.0,left: 130,top:widget.scrollBarMarginTop),
+                      padding:  EdgeInsets.only(right:10.0,left: 130,top:widget.scrollBarMarginTop!),
                       child: ScrollBar(barOffset: _barOffset,scrollBarLength: _scrollBarLength,thumbLength: widget.thumbLength,)
                   ):Container()
                 ],
@@ -154,11 +153,11 @@ class _ScrollableTextViewState extends State<ScrollableTextView> with TickerProv
           });
           _controller.jumpTo((_barOffset*x));
         }
-        else if((sum+widget.thumbLength).round() < _scrollBarLength ) {
+        else if((sum+widget.thumbLength!).round() < _scrollBarLength ) {
           setState(() {
             _barOffset += details.delta.dy;
           });
-          _controller.jumpTo((_barOffset*x)+(widget.thumbLength*x));
+          _controller.jumpTo((_barOffset*x)+(widget.thumbLength!*x));
         }
 
       }

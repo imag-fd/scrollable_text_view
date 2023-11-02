@@ -1,6 +1,6 @@
 name: scrollable_text_view
 description: Displaying a vertical scroll bar in a text block
-version: 0.0.3
+version: 0.0.4
 author: Imen AGUIR <imene.aguir@gmail.com>
 homepage: https://github.com/imenaguir/scrollable_text_view
 
